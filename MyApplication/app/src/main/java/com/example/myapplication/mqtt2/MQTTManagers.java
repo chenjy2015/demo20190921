@@ -22,15 +22,16 @@ import javax.net.ssl.TrustManagerFactory;
 
 public class MQTTManagers {
 
-    private static final String TAG = "MQTTManager";
+    public static final String TAG = "MQTTManager";
     private static final String SERVICE_HOST = "tcp://192.168.10.48:61613";
-    public  String mTopic= "toclient/125";
+    public String mTopic = "toclient/125";
     private String mClientId = "2df8aabfb8b6088953664f413a446bbc";
     private String mUserName = "admin";
     private String mPassword = "password";
     private Context mContext;
     private MQTTManagers mTTManager;
     private MessageHandlerCallBack callBack;
+    private PushCallback pushCallback;
 
     private MqttClient mClient;
     private MqttConnectOptions mOptions;
@@ -53,6 +54,7 @@ public class MQTTManagers {
         this.mTopic = topicStr;
         this.mUserName = userName;
         this.mPassword = password;
+        this.pushCallback = new PushCallback(this);
         try {
             /**
              * host为主机名，clientid即连接MQTT的客户端ID，一般以唯一标识符表示，
@@ -107,7 +109,7 @@ public class MQTTManagers {
             /**
              * 设置消息回调
              */
-            mClient.setCallback(new PushCallback());
+            mClient.setCallback(pushCallback);
         } catch (MqttException e) {
             e.printStackTrace();
             Log.e(TAG, "connect: " + e);
@@ -125,6 +127,21 @@ public class MQTTManagers {
         }
         Log.d(TAG, "ClientId=" + mClient.getClientId());
     }
+
+    /**
+     * 重连服务器
+     */
+    public void reConnect() {
+        if (mClient != null) {
+            try {
+                mClient.close();
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+            connect();
+        }
+    }
+
 
     /**
      * 订阅消息
@@ -163,51 +180,6 @@ public class MQTTManagers {
         }
     }
 
-    int count = 0;
-
-    /**
-     * 发布和订阅消息的回调
-     */
-    public class PushCallback implements MqttCallback {
-
-        public void connectionLost(Throwable cause) {
-            Log.e(TAG, "connectionLost: " + cause);
-            if (count < 5) {
-                count++;//5次重连
-                Log.d(TAG, "断开连接，重新连接" + count + "次" + cause);
-                try {
-                    mClient.close();
-                    connect();
-                } catch (MqttException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        /**
-         * 发布消息的回调
-         */
-        @Override
-        public void deliveryComplete(IMqttDeliveryToken token) {
-            //publish后会执行到这里
-            Log.d(TAG, "发布消息成功的回调" + token.isComplete());
-        }
-
-        /**
-         * 接收消息的回调方法
-         */
-        @Override
-        public void messageArrived(final String topicName, final MqttMessage message)
-                throws Exception {
-            //subscribe后得到的消息会执行到这里面
-            Log.d(TAG, "接收消息==" + new String(message.getPayload()));
-            if (callBack != null) {
-                callBack.messageSuccess(topicName, new String(message.getPayload()));
-            }
-        }
-
-    }
-
 
     /**
      * 设置接收消息的回调方法
@@ -216,14 +188,9 @@ public class MQTTManagers {
      */
     public void setMessageHandlerCallBack(MessageHandlerCallBack callBack) {
         this.callBack = callBack;
+        this.pushCallback.setCallBack(callBack);
     }
 
-    public MessageHandlerCallBack getMessageHandlerCallBack() {
-        if (callBack != null) {
-            return callBack;
-        }
-        return null;
-    }
 
     /**
      * 断开链接
