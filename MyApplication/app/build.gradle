@@ -51,6 +51,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     //rxbinding
     implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0'
+    //mqtt
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
 
 
 }
