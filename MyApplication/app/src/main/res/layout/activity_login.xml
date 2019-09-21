@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity">
+
+    <data />
+
+    <com.example.myapplication.widget.BorderTextView
+        android:id="@+id/start"
+        style="@style/BorderTextViewNeutralText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="48dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="登录"
+        android:textSize="18sp"
+        app:cornerRadius="8dp" />
+
+</layout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.example.myapplication.AutoLoopBackgroundTextView
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:text="登陆"
+        app:text_colors="@array/text_colors"
+        app:text_backgrounds="@array/text_backgrounds"
+        tools:ignore="MissingConstraints"
+        android:focusable="true" />
+
+    <com.example.myapplication.AutoLoopBackgroundImage
+        android:id="@+id/login_out"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:padding="25dp"
+        android:gravity="center"
+        android:clickable="true"
+        app:img_backgrounds="@array/default_backgrounds"
+        tools:ignore="MissingConstraints"
+        android:focusable="true" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

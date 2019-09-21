@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="text_colors">
+        <item>@color/colorPrimary</item>
+        <item>@color/colorAccent</item>
+        <item>@color/colorPrimaryDark</item>
+    </array>
+
+    <array name="text_backgrounds">
+        <item>@drawable/auto</item>
+        <item>@drawable/bofang_icon</item>
+        <item>@drawable/chuanglian_guan</item>
+    </array>
+
+    <array name="default_backgrounds">
+        <item>@drawable/auto</item>
+        <item>@drawable/bofang_icon</item>
+    </array>
+
+    <array name="first_background">
+        <item>@drawable/chuanglian_guan</item>
+        <item>@drawable/palette</item>
+    </array>
+
+    <array name="sounds">
+        <item>像风一样自由</item>
+        <item>初恋情人</item>
+        <item>辞九门回忆</item>
+        <item>多想在平凡的生活中拥抱你</item>
+        <item>潇湘子原曲</item>
+        <item>故乡的原风景</item>
+        <item>不谓侠</item>
+        <item>Aloha Heja He</item>
+        <item>别让我一个人醉</item>
+        <item>散了就好</item>
+        <item></item>
+    </array>
+</resources>
