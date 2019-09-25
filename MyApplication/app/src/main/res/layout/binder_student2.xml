@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="student"
+            type="com.example.myapplication.multi.Student" />
+
+        <import type="com.example.myapplication.multi.Sex" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{student.name}"
+                android:textColor="@{student.sex.equals(Sex.NOT_MAN.sex) ? @color/colorAccent : @color/text_blue}"
+                tools:text="小明" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{String.valueOf(student.age)}"
+                android:textColor="@color/text_blue"
+                tools:text="8" />
+
+            <TextView
+                android:id="@+id/sex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{student.sex}"
+                android:textColor="@color/text_blue"
+                tools:text="男" />
+
+            <TextView
+                android:id="@+id/work"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{student.work}"
+                android:textColor="@color/text_blue"
+                tools:text="写作业" />
+
+            <TextView
+                android:id="@+id/occupation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{student.occupation}"
+                android:textColor="@color/text_blue"
+                tools:text="学生" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</layout>

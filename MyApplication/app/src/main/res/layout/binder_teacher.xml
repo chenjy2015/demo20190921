@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="teacher"
+            type="com.example.myapplication.multi.Teacher" />
+
+        <import type="com.example.myapplication.multi.Sex" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{teacher.name}"
+                android:textColor="@{teacher.sex.equals(Sex.NOT_MAN.sex) ? @color/colorAccent : @color/text_green}"
+                tools:text="刘老师" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{String.valueOf(teacher.age)}"
+                android:textColor="@color/text_green"
+                tools:text="28" />
+
+            <TextView
+                android:id="@+id/sex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{teacher.sex}"
+                android:textColor="@color/text_green"
+                tools:text="女" />
+
+            <TextView
+                android:id="@+id/work"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{teacher.work}"
+                android:textColor="@color/text_green"
+                tools:text="批作业" />
+
+            <TextView
+                android:id="@+id/occupation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{teacher.occupation}"
+                android:textColor="@color/text_green"
+                tools:text="教师" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</layout>
