@@ -1,11 +1,12 @@
-package com.example.myapplication;
+package com.example.baselibrary.ui;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.viewmodel.BaseViewModel;
+import com.example.baselibrary.BaseViewModel;
+import com.example.baselibrary.utils.PUtils;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import io.reactivex.disposables.Disposable;
 public abstract class BaseActivity<ViewModel extends BaseViewModel> extends AppCompatActivity {
 
     private ArrayList<Disposable> disposables = new ArrayList<>();
-    ViewModel viewModel;
+    public ViewModel viewModel;
 
     public void addDisposable(Disposable disposable) {
         disposables.add(disposable);
@@ -48,5 +49,6 @@ public abstract class BaseActivity<ViewModel extends BaseViewModel> extends AppC
     protected void onDestroy() {
         super.onDestroy();
         clearDisposable();
+        viewModel.destroy();
     }
 }

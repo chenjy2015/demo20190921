@@ -1,13 +1,15 @@
 package com.example.myapplication;
 
-public class TextModel implements IBaseModel{
+import com.example.baselibrary.BaseViewModel;
+
+public class TextModel implements BaseViewModel {
 
     public String getText(){
         return null;
     }
 
     @Override
-    public void onDestory() {
+    public void destroy() {
 
     }
 }

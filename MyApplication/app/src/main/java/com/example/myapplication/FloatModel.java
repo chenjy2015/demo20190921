@@ -1,14 +1,17 @@
 package com.example.myapplication;
 
-public class FloatModel implements IBaseModel {
+import com.example.baselibrary.BaseViewModel;
+
+public class FloatModel implements BaseViewModel {
     TextModel model= new TextModel();
 
     public void calcFloat(){
         String key = model.getText();
     }
 
+
     @Override
-    public void onDestory() {
+    public void destroy() {
 
     }
 }

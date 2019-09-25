@@ -1,4 +1,4 @@
-package com.example.myapplication.mqtt2;
+package com.example.mqtt;
 
 public interface MessageHandlerCallBack {
     void messageSuccess(String topicName, String topicMsg);

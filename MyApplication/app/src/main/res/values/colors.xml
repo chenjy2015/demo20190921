@@ -7,5 +7,8 @@
     <color name="white">#FFFFFF</color>
     <!--淡色字体-->
     <color name="text_weak">#AAB4B4B4</color>
+    <color name="text_blue">#AA3099FF</color>
+    <color name="text_purple">#AA990990</color>
+    <color name="text_green">#AA88af69</color>
 
 </resources>

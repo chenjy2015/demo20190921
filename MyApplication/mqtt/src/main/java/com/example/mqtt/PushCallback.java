@@ -1,4 +1,4 @@
-package com.example.myapplication.mqtt2;
+package com.example.mqtt;
 
 import android.util.Log;
 
@@ -6,7 +6,7 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-import static com.example.myapplication.mqtt2.MQTTManagers.TAG;
+import static com.example.mqtt.MQTTManager.TAG;
 
 /**
  * 发布和订阅消息的回调
@@ -14,11 +14,11 @@ import static com.example.myapplication.mqtt2.MQTTManagers.TAG;
 public class PushCallback implements MqttCallback {
     int count = 0;
 
-    private MQTTManagers managers;
+    private MQTTManager managers;
     private MessageHandlerCallBack callBack;
 
 
-    PushCallback(MQTTManagers managers) {
+    public PushCallback(MQTTManager managers) {
         this.managers = managers;
     }
 
@@ -27,6 +27,7 @@ public class PushCallback implements MqttCallback {
         return this;
     }
 
+    @Override
     public void connectionLost(Throwable cause) {
         Log.e(TAG, "connectionLost: " + cause);
         if (count < 5) {

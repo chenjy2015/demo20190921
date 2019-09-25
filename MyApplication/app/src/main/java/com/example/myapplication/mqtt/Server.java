@@ -1,5 +1,9 @@
 package com.example.myapplication.mqtt;
 
+
+import com.example.mqtt.MQTTManager;
+import com.example.mqtt.PushCallback;
+
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttDeliveryToken;
@@ -18,22 +22,22 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
  */
 public class Server {
 
-    public static final String HOST = "tcp://192.168.1.3:61613";
+    public static final String HOST = "tcp://192.168.10.48:61613";
     public static final String TOPIC = "toclient/124";
     public static final String TOPIC125 = "toclient/125";
-    private static final String clientid = "server";
+    public static final String CLIENT_ID = "server12";
 
     private MqttClient client;
-    private MqttTopic topic;
-    private MqttTopic topic125;
+    public MqttTopic topic;
+    public MqttTopic topic125;
     private String userName = "admin";
     private String passWord = "password";
 
-    private MqttMessage message;
+    public MqttMessage message;
 
     public Server() throws MqttException {
         // MemoryPersistence设置clientid的保存形式，默认为以内存保存
-        client = new MqttClient(HOST, clientid, new MemoryPersistence());
+        client = new MqttClient(HOST, CLIENT_ID, new MemoryPersistence());
         connect();
     }
 
@@ -43,11 +47,11 @@ public class Server {
         options.setUserName(userName);
         options.setPassword(passWord.toCharArray());
         // 设置超时时间
-        options.setConnectionTimeout(10);
+        options.setConnectionTimeout(5);
         // 设置会话心跳时间
         options.setKeepAliveInterval(20);
         try {
-            client.setCallback(new PushCallback());
+            client.setCallback(new PushCallback(MQTTManager.getInstance()));
             client.connect(options);
             topic = client.getTopic(TOPIC);
             topic125 = client.getTopic(TOPIC125);

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.baselibrary.ui;
 
 import android.os.Bundle;
 
@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
-import com.example.myapplication.viewmodel.BaseViewModel;
+import com.example.baselibrary.BaseViewModel;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -27,6 +27,7 @@ public abstract class BaseUIActivity<D extends ViewDataBinding, V extends BaseVi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataBinding = DataBindingUtil.setContentView(this, getLayoutId());
+        init();
         initEvent();
     }
 

@@ -1,4 +1,4 @@
-package com.example.myapplication.util;
+package com.example.baselibrary.utils;
 
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;

@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
-public class ImageModel implements IBaseModel {
+import com.example.baselibrary.BaseViewModel;
+
+public class ImageModel implements BaseViewModel {
 
     TextModel model= new TextModel();
 
@@ -9,7 +11,7 @@ public class ImageModel implements IBaseModel {
     }
 
     @Override
-    public void onDestory() {
+    public void destroy() {
 
     }
 }

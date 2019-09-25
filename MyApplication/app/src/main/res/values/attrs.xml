@@ -10,16 +10,4 @@
         <attr name="img_backgrounds" format="reference"/>
     </declare-styleable>
 
-    <!-- 有边框和背景的View -->
-    <declare-styleable name="BorderTextView">
-        <attr name="strokeWidth" format="dimension"/>
-        <attr name="cornerRadius" format="dimension"/>
-        <attr name="borderStrokeColor" format="color"/>
-        <attr name="enableBackColor" format="color" />
-        <attr name="contentBackColor" format="color"/>
-        <attr name="contentPressedColor" format="color"/>
-        <attr name="followTextColor" format="boolean"/>
-    </declare-styleable>
-
-
 </resources>

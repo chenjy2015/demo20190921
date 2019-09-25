@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':base', ':mqtt'
 rootProject.name='My Application'

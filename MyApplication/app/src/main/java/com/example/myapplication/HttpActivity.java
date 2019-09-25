@@ -5,11 +5,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.baselibrary.ui.BaseActivity;
 import com.example.myapplication.retrofit.HttpProxy;
-import com.example.myapplication.retrofit.HttpThrowable;
 import com.example.myapplication.retrofit.ThrowableHandler;
-
-import java.io.IOException;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

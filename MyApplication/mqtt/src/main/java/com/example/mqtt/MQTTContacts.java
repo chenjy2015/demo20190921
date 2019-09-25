@@ -1,6 +1,13 @@
-package com.example.myapplication.mqtt2;
+package com.example.mqtt;
 
 public class MQTTContacts {
+
+    public static final String SERVICE_HOST = "tcp://192.168.10.48:61613";
+    public static final String TOPIC = "toclient/124";
+    public static final String TOPIC125 = "toclient/125";
+    public static String CLIENT_ID = "client125";
+    public static String USERNAME = "admin";
+    public static String PASSWORD = "password";
 
     public enum QoS {
         /**
@@ -24,7 +31,7 @@ public class MQTTContacts {
         QoSForOnce(2);
 
 
-       public int type;
+        public int type;
 
         QoS(int type) {
             this.type = type;

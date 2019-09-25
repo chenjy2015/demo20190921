@@ -1,14 +1,16 @@
-package com.example.myapplication.mqtt2;
+package com.example.mqtt;
 
 import android.content.Context;
+
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 
 import javax.net.ssl.SSLContext;
 
 public interface IMQTTProxy<T extends IMQTTProxy> {
 
-    T init(Context context, String topic, String userName, String password);
+    T init(Context context, MQTTBean mqttBean);
 
-    void connect();
+    void connect(IMqttActionListener actionListener);
 
     void disconnect();
 
@@ -17,6 +19,8 @@ public interface IMQTTProxy<T extends IMQTTProxy> {
     boolean isConnected();
 
     void subscribeMsg(String topic, int qos);
+
+    void subscribeMsg(String[] topic, int[] qos);
 
     void publish(String topic, String msg, boolean isRetained, int qos);
 

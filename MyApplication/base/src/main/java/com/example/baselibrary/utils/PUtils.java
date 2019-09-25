@@ -1,6 +1,6 @@
-package com.example.myapplication;
+package com.example.baselibrary.utils;
 
-import com.example.myapplication.viewmodel.BaseViewModel;
+import com.example.baselibrary.BaseViewModel;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

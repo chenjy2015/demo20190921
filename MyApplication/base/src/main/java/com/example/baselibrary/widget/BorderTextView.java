@@ -1,4 +1,4 @@
-package com.example.myapplication.widget;
+package com.example.baselibrary.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,8 +15,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
-import com.example.myapplication.R;
-import com.example.myapplication.util.DrawableUtil;
+import com.example.baselibrary.R;
+import com.example.baselibrary.utils.DrawableUtil;
 
 public class BorderTextView extends AppCompatTextView {
 
@@ -69,7 +69,9 @@ public class BorderTextView extends AppCompatTextView {
             setBackground(DrawableUtil.getPressedSelector(enableColor, contentColor, contentColor, cornerRadius));
             setForeground(DrawableUtil.getPressedSelector(enableColor, Color.TRANSPARENT, pressedColor, cornerRadius));
         } else {
-            setBackground(DrawableUtil.getPressedSelector(enableColor, contentColor, pressedColor, cornerRadius));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                setBackground(DrawableUtil.getPressedSelector(enableColor, contentColor, pressedColor, cornerRadius));
+            }
         }
     }
 

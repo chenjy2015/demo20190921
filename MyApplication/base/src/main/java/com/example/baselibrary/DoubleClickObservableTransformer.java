@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.baselibrary;
 
 import java.util.concurrent.TimeUnit;
 

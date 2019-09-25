@@ -1,16 +1,18 @@
-package com.example.myapplication.mqtt2;
+package com.example.mqtt;
 
 import android.content.Context;
+
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 
 import javax.net.ssl.SSLContext;
 
 public class MQTTProxy implements IMQTTProxy<MQTTProxy> {
 
-    private MQTTManagers managers;
+    private MQTTManager managers;
 
     private MQTTProxy() {
         if (managers == null) {
-            managers = MQTTManagers.getInstance();
+            managers = MQTTManager.getInstance();
         }
     }
 
@@ -23,14 +25,14 @@ public class MQTTProxy implements IMQTTProxy<MQTTProxy> {
     }
 
     @Override
-    public MQTTProxy init(Context context, String topic, String userName, String password) {
-        managers.init(context, topic, userName, password);
+    public MQTTProxy init(Context context, MQTTBean mqttBean) {
+        managers.init(context, mqttBean);
         return this;
     }
 
     @Override
-    public void connect() {
-        managers.connect();
+    public void connect(IMqttActionListener actionListener) {
+        managers.connect(actionListener);
     }
 
     @Override
@@ -50,6 +52,11 @@ public class MQTTProxy implements IMQTTProxy<MQTTProxy> {
 
     @Override
     public void subscribeMsg(String topic, int qos) {
+        managers.subscribeMsg(topic, qos);
+    }
+
+    @Override
+    public void subscribeMsg(String[] topic, int[] qos) {
         managers.subscribeMsg(topic, qos);
     }
 
